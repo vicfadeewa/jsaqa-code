@@ -33,3 +33,36 @@ describe("Github page tests", () => {
     expect(actual).toContain("Sign up for free");
   }, 12000); 
 });
+
+describe("Other Github pages headers tests", () => {
+  let page;
+
+  beforeEach(async () => {
+    page = await browser.newPage();
+  });
+
+  afterEach(async () => {
+    await page.close();
+  });
+
+  test("Homepage header contains 'The future of building happens together'", async () => {
+    await page.goto("https://github.com");
+    await page.waitForSelector("#hero-section-brand-heading", { timeout: 10000 });
+    const headerText = await page.$eval("#hero-section-brand-heading", el => el.textContent.trim());
+    expect(headerText).toEqual("The future of building happens together");
+  }, 15000);
+
+  test("Pricing page header contains 'Try the Copilot-powered platform'", async () => {
+    await page.goto("https://github.com/pricing");
+    await page.waitForSelector("h1.h2-mktg", { timeout: 8000 }); 
+    const headerText = await page.$eval("h1.h2-mktg", el => el.textContent.trim());
+    expect(headerText).toEqual("Try the Copilot-powered platform");
+  }, 10000);
+
+  test("Copilot Features page header contains 'Command your craft'", async () => {
+    await page.goto("https://github.com/features/copilot");
+    await page.waitForSelector("#hero-section-brand-heading", { timeout: 8000 }); 
+    const headerText = await page.$eval("#hero-section-brand-heading", el => el.textContent.trim());
+    expect(headerText).toEqual("Command your craft");
+  }, 10000);
+});
