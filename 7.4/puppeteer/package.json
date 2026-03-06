@@ -2,15 +2,16 @@
   "name": "jsaqa_3_3",
   "version": "1.0.0",
   "description": "",
+  "license": "ISC",
+  "author": "Victoriya",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
-  },
-  "author": "",
-  "license": "ISC",
+    "test": "jest gh.test.js --verbose"
+    },
   "dependencies": {
-    "jest": "^27.3.1",
-    "jest-puppeteer": "^6.0.0",
-    "puppeteer": "^13.3.2"
+    "jest": "^30.2.0",
+    "jest-puppeteer": "^11.0.0",
+    "puppeteer": "^24.38.0"
   }
 }
